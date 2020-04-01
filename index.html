@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <title>Music Player</title>
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <div class="container">
+                <nav>
+                    <div class="player-controls">
+                        <ul>
+                            <li>
+                                <div class="progress" ref="progress">
+                                    <div class="progressBar" @click="clickProgress">
+                                        <div class="progressCurrent" :style="{ width : barWidth }">
+                                        </div>
+                                    </div>
+                                    <div class="progressTime">{{ currentTime }}</div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div @click="prevTrack">
+                                    <i class="fas fa-step-backward"></i>
+                                </div>
+                            </li>
+                            <li>
+                                <div @click="play">
+                                    <i class="fas fa-pause-circle" v-if="isTimerPlaying"></i>
+                                    <i class="fas fa-play" v-else></i>
+                                </div>
+                            </li>
+                            <li>
+                                <div @click="nextTrack">
+                                    <i class="fas fa-step-forward"></i>
+                                    <div class="track" v-if="currentTrack">
+                                        <div class="artist">{{ currentTrack.artist }} -
+                                            {{ currentTrack.name }}</div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <div id="img">
+            <img :src="currentTrack.img" class="trackImg">
+        </div>
+    </div>
+
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
